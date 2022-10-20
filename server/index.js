@@ -1,12 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const cors = require('cors')
 
 const app = express();
 
 const router = require("./routes");
 
 const uri = "mongodb+srv://mongo11:mongodb5747@cluster0.swwqo.mongodb.net/?retryWrites=true&w=majority";
+
+app.use(cors())
 
 app.use(express.json());
 
