@@ -4,7 +4,7 @@ const {getUsersList} = require("./usersController");
 
 const router = express.Router();
 
-router.get("/list", getUsersList);
-//router.get("/list/:userId",getUser);
+router.post("/list", getUsersList);
+//router.get("/list/:emailId",getUser);
 
 module.exports = router;
