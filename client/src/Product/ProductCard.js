@@ -10,15 +10,6 @@ const ProductCard = (props) => {
     price="0",
   } = props.cardData;
 
-  const {
-    setShowModal,
-    setModalData
-  } = props;
-
-  const onShowModal = () => {
-    setShowModal(true);
-    setModalData(props.cardData);
-  }
 
   return (
     <div class="card text-center">
@@ -27,7 +18,7 @@ const ProductCard = (props) => {
         <h5 class="card-title">{title}</h5>
         <div>
         <span style={{"font-weight":"bold"}}>Price &#8377; {price}   </span>
-        <Link to={'./details'}>Details</Link>
+        <Link to={{pathname:'./details', state:{productDetails, title, imageUrl, price}}}>Details</Link>
         </div>
       </div>
     </div>

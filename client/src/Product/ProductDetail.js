@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ProductDetail = (props) => {
-  const { data } = props.data;
+  let data = useLocation();
+  //console.log(data.state.title);
   return (
-    <div>ProductDetails</div>
+    <div>Product Details Page</div>
   )
 }
 
