@@ -1,33 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
-import Login from "./components/Login";
+import Login from "./Login/Login";
+import ProductList from "./Product/ProductList";
+import ProductDetail from "./Product/ProductDetail";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const getUserDetails = async (email, password) => {
-    console.log("inside user");
-    // const requestOptions = {
-    //     method: 'GET',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: {
-    //         email,
-    //         password
-    //     }
-    // };
-    try {
-      let response = await axios.get(
-        "http://localhost:4000/loggedInUserDetails"
-      );
-      let data = await response.json();
-      setIsLoggedIn(data.isLoggedIn);
-    } catch (err) {
+  const getUserDetails = (email, password) => {
+    axios
+      .post("http://localhost:4000/api/users/list", {
+              email,
+              password
+      })
+      .then((response) => {
+        let data = response.json();
+        console.log(data)
+        setIsLoggedIn(true);
+      })
+      .catch ((err) =>{
       console.log("this is error" + err);
-    }
+      })
   };
+
+
   if (!isLoggedIn) {
     return (
       <div className="App">
@@ -35,11 +34,16 @@ function App() {
       </div>
     );
   }
-  return (
-    <div className="App">
 
-    </div>
-  );
+    return (
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<ProductList/>} />
+          <Route path="/details" element = {<ProductDetail/>} />
+        </Routes>
+      </div>
+    );
+  
 }
 
 export default App;

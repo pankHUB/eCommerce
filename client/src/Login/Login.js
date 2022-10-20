@@ -8,7 +8,8 @@ const Login = (props) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const submithandler = () =>{
-        getUserDetails(email,password)
+        console.log(email);
+        getUserDetails(email,password);
     }
   return (<>
       <h2>Please Log In</h2>
@@ -32,7 +33,7 @@ const Login = (props) => {
           </label>
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="inputPassword"
             onChange={e => setPassword(e.target.value)}
           />
