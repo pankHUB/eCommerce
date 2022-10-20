@@ -7,7 +7,8 @@ const app = express();
 
 const router = require("./routes");
 
-const uri = "mongodb+srv://mongo11:mongodb5747@cluster0.swwqo.mongodb.net/?retryWrites=true&w=majority";
+//Need before start server
+const uri = "";
 
 app.use(cors())
 
